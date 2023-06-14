@@ -2,13 +2,7 @@ const gameField = document.querySelector('#cards');
 const resetBlock = document.querySelector('#reset');
 const btnReset = document.querySelector('#reset-btn');
 const levelList = document.querySelector('.level-list');
-const [
-  btnFirstLevel,
-  btnSecondLevel,
-  btnThirdLevel,
-  btnFourthLevel,
-  btnFifthLevel,
-] = document.querySelectorAll('.level-btn');
+const levelButtons = document.querySelectorAll('.level-btn');
 
 let countCards = 16;
 let selectedCards = [];
@@ -19,9 +13,9 @@ let pause = false;
 initialize();
 
 function initialize() {
-  gameField.onclick = openCard;
-  btnReset.onclick = resetGame;
-  levelList.onclick = createLevel;
+  gameField.addEventListener('click', openCard);
+  btnReset.addEventListener('click', resetGame);
+  levelList.addEventListener('click', createLevel);
   imagesNumbers = createImagesNumbers(countCards);
   shuffleArray(imagesNumbers);
   console.log('imagesNumbers: ', imagesNumbers);
@@ -132,13 +126,7 @@ function createImagesNumbers(cardsQuantity) {
 }
 
 function setActiveLevel(e) {
-  [
-    btnFirstLevel,
-    btnSecondLevel,
-    btnThirdLevel,
-    btnFourthLevel,
-    btnFifthLevel,
-  ].forEach(btn => btn.classList.remove('active'));
+  levelButtons.forEach(btn => btn.classList.remove('active'));
   e.target.classList.add('active');
 }
 
