@@ -1,18 +1,22 @@
 const gameField = document.querySelector('#cards');
 const resetBlock = document.querySelector('#reset');
 const btnReset = document.querySelector('#reset-btn');
+const levelList = document.querySelector('.level-list');
 const btnFirstLevel = document.querySelector('#level1');
 const btnSecondLevel = document.querySelector('#level2');
 const btnThirdLevel = document.querySelector('#level3');
 gameField.onclick = openCard;
 btnReset.onclick = resetGame;
-btnSecondLevel.onclick = createSecondLevel;
-btnThirdLevel.onclick = createThirdLevel;
+levelList.onclick = createLevel;
+// btnSecondLevel.onclick = createSecondLevel;
+// btnThirdLevel.onclick = createThirdLevel;
 
 let countCards = 16;
 let selectedCards = [];
 let deletedCardsQuantity = 0;
-let imagesNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+let imagesNumbers = [];
+imagesNumbers = createImagesNumbers(16);
+console.log('imagesNumbers : ', imagesNumbers);
 let pause = false;
 shuffleArray(imagesNumbers);
 console.log(imagesNumbers);
@@ -72,47 +76,55 @@ function shuffleArray(array) {
   }
 }
 
-function createSecondLevel() {
-  const isActiveLevel = btnSecondLevel.classList.contains('active');
-  if (isActiveLevel) return;
-  btnFirstLevel.classList.remove('active');
-  btnSecondLevel.classList.add('active');
-  btnThirdLevel.classList.remove('active');
+function createLevel(e) {
+  const levelBtn = e.target;
+  if (levelBtn.tagName !== 'BUTTON') return;
+  setActiveLevel(e);
   gameField.innerHTML = '';
-  countCards = 24;
-  gameField.style.width = '600px';
+  switch (levelBtn.id) {
+    case 'level1':
+      countCards = 16;
+      gameField.style.width = '400px';
+      break;
+    case 'level2':
+      countCards = 24;
+      gameField.style.width = '600px';
+      break;
+    case 'level3':
+      countCards = 32;
+      gameField.style.width = '800px';
+      break;
+    default:
+      countCards = 16;
+      gameField.style.width = '400px';
+      break;
+  }
   for (let i = 0; i < countCards; i++) {
     const card = document.createElement('li');
     card.id = i;
     gameField.appendChild(card);
   }
-  imagesNumbers = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-    12,
-  ];
+  imagesNumbers = createImagesNumbers(countCards);
   shuffleArray(imagesNumbers);
   console.log(imagesNumbers);
 }
 
-function createThirdLevel() {
-  const isActiveLevel = btnThirdLevel.classList.contains('active');
+function createImagesNumbers(cardsQuantity) {
+  imagesNumbers = [];
+  const maxCardNumber = cardsQuantity / 2;
+  for (let i = 1; i <= maxCardNumber; i++) {
+    imagesNumbers.push(i);
+    imagesNumbers.push(i);
+  }
+
+  return imagesNumbers;
+}
+
+function setActiveLevel(e) {
+  const isActiveLevel = e.target.classList.contains('active');
   if (isActiveLevel) return;
   btnFirstLevel.classList.remove('active');
   btnSecondLevel.classList.remove('active');
-  btnThirdLevel.classList.add('active');
-  gameField.innerHTML = '';
-  countCards = 32;
-  gameField.style.width = '800px';
-  gameField.style.height = '400px';
-  for (let i = 0; i < countCards; i++) {
-    const card = document.createElement('li');
-    card.id = i;
-    gameField.appendChild(card);
-  }
-  imagesNumbers = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, 2, 3, 4, 5, 6, 7,
-    8, 9, 10, 11, 12, 13, 14, 15, 16,
-  ];
-  shuffleArray(imagesNumbers);
-  console.log(imagesNumbers);
+  btnThirdLevel.classList.remove('active');
+  e.target.classList.add('active');
 }
