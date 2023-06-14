@@ -19,6 +19,7 @@ body {
     background-size: cover;
     position: relative;
 	font-family: "STARWARS", sans-serif;
+	padding-top: 150px;
 }
 #cards {
 	background: #A2BFD7;
@@ -26,8 +27,7 @@ body {
 	height: 400px;
 	border-radius: 10px;
 	padding: 2px;
-	margin: 0 auto;
-	margin-top: 180px;
+	margin:  30px auto 0px auto;
 }
 #cards li {
 	list-style: none;
@@ -64,20 +64,37 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 }
-#reset button {
+#reset button, .level-btn{
 	border: 2px solid #251651;
 	color: #251651;
 	font-size: 24px;
 	border-radius: 4px;
 	display: block;
-	margin: 15px auto 0;
 	cursor: pointer;
 	padding: 8px 15px 5px;
 	text-transform: uppercase;
 	background: #FFF;
 	font-family: "STARWARS", sans-serif;
 }
-#reset button:hover {
+
+#reset button  {
+	margin: 15px auto 0;
+}
+#reset button:hover,  .level-btn:hover{
 	background: #251651;
 	color: #FFF;
+}
+
+.level-list {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+.level-btn.active {
+	background-color: #6d4f88;
+	color: white;
 }

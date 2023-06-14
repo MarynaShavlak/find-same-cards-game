@@ -1,8 +1,13 @@
 const gameField = document.querySelector('#cards');
 const resetBlock = document.querySelector('#reset');
 const btnReset = document.querySelector('#reset-btn');
+const btnFirstLevel = document.querySelector('#level1');
+const btnSecondLevel = document.querySelector('#level2');
+const btnThirdLevel = document.querySelector('#level3');
 gameField.onclick = openCard;
 btnReset.onclick = resetGame;
+btnSecondLevel.onclick = createSecondLevel;
+btnThirdLevel.onclick = createThirdLevel;
 
 let countCards = 16;
 let selectedCards = [];
@@ -65,4 +70,49 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+}
+
+function createSecondLevel() {
+  const isActiveLevel = btnSecondLevel.classList.contains('active');
+  if (isActiveLevel) return;
+  btnFirstLevel.classList.remove('active');
+  btnSecondLevel.classList.add('active');
+  btnThirdLevel.classList.remove('active');
+  gameField.innerHTML = '';
+  countCards = 24;
+  gameField.style.width = '600px';
+  for (let i = 0; i < countCards; i++) {
+    const card = document.createElement('li');
+    card.id = i;
+    gameField.appendChild(card);
+  }
+  imagesNumbers = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+    12,
+  ];
+  shuffleArray(imagesNumbers);
+  console.log(imagesNumbers);
+}
+
+function createThirdLevel() {
+  const isActiveLevel = btnThirdLevel.classList.contains('active');
+  if (isActiveLevel) return;
+  btnFirstLevel.classList.remove('active');
+  btnSecondLevel.classList.remove('active');
+  btnThirdLevel.classList.add('active');
+  gameField.innerHTML = '';
+  countCards = 32;
+  gameField.style.width = '800px';
+  gameField.style.height = '400px';
+  for (let i = 0; i < countCards; i++) {
+    const card = document.createElement('li');
+    card.id = i;
+    gameField.appendChild(card);
+  }
+  imagesNumbers = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1, 2, 3, 4, 5, 6, 7,
+    8, 9, 10, 11, 12, 13, 14, 15, 16,
+  ];
+  shuffleArray(imagesNumbers);
+  console.log(imagesNumbers);
 }

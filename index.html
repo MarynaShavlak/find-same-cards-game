@@ -1,18 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Cards game</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta charset="utf8">
-</head>
-<body>
-	<ul id="cards"></ul>
+  <head>
+    <title>Cards game</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf8" />
+  </head>
+  <body>
+    <ul class="level-list">
+      <li class="level-item">
+        <button id="level1" class="level-btn active">Level 1</button>
+      </li>
+      <li class="level-item">
+        <button id="level2" class="level-btn">Level 2</button>
+      </li>
+      <li class="level-item">
+        <button id="level3" class="level-btn">Level 3</button>
+      </li>
+    </ul>
 
-	<div id="reset">
-		<h2>You win</h2>
-		<button id="reset-btn">Restart</button>
-	</div>
+    <ul id="cards"></ul>
 
-	<script type="text/javascript" src="script.js"></script>
-</body>
+    <div id="reset">
+      <h2>You win</h2>
+      <button id="reset-btn">Restart</button>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>
