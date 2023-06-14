@@ -34,6 +34,8 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	background: #A2BFD7;
+	min-width: 400px;
+	min-height: 400px;
 	width: 400px;
 	height: 400px;
 	border-radius: 10px;
