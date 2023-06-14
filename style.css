@@ -27,7 +27,6 @@ body {
 
 .wrapper {
 	display: flex;
-	/* justify-content: space-between; */
 	gap: 250px;
 }
 
@@ -99,7 +98,7 @@ body {
 .level-list {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	/* justify-content: center; */
 	gap: 15px;
 	margin: 0 ;
 	padding: 0;

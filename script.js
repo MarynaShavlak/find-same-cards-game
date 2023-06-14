@@ -5,26 +5,29 @@ const levelList = document.querySelector('.level-list');
 const btnFirstLevel = document.querySelector('#level1');
 const btnSecondLevel = document.querySelector('#level2');
 const btnThirdLevel = document.querySelector('#level3');
-gameField.onclick = openCard;
-btnReset.onclick = resetGame;
-levelList.onclick = createLevel;
-// btnSecondLevel.onclick = createSecondLevel;
-// btnThirdLevel.onclick = createThirdLevel;
+const btnFourthLevel = document.querySelector('#level4');
+const btnFifthLevel = document.querySelector('#level5');
 
 let countCards = 16;
 let selectedCards = [];
 let deletedCardsQuantity = 0;
 let imagesNumbers = [];
-imagesNumbers = createImagesNumbers(16);
-console.log('imagesNumbers : ', imagesNumbers);
 let pause = false;
-shuffleArray(imagesNumbers);
-console.log(imagesNumbers);
 
-for (let i = 0; i < countCards; i++) {
-  const card = document.createElement('li');
-  card.id = i;
-  gameField.appendChild(card);
+initialize();
+
+function initialize() {
+  gameField.onclick = openCard;
+  btnReset.onclick = resetGame;
+  levelList.onclick = createLevel;
+  imagesNumbers = createImagesNumbers(16);
+  shuffleArray(imagesNumbers);
+  console.log(imagesNumbers);
+  for (let i = 0; i < countCards; i++) {
+    const card = document.createElement('li');
+    card.id = i;
+    gameField.appendChild(card);
+  }
 }
 
 function openCard(e) {
@@ -85,18 +88,32 @@ function createLevel(e) {
     case 'level1':
       countCards = 16;
       gameField.style.width = '400px';
+      gameField.style.height = '400px';
       break;
     case 'level2':
       countCards = 24;
       gameField.style.width = '600px';
+      gameField.style.height = '400px';
       break;
     case 'level3':
       countCards = 32;
       gameField.style.width = '800px';
+      gameField.style.height = '400px';
+      break;
+    case 'level4':
+      countCards = 40;
+      gameField.style.width = '800px';
+      gameField.style.height = '500px';
+      break;
+    case 'level5':
+      countCards = 48;
+      gameField.style.width = '800px';
+      gameField.style.height = '600px';
       break;
     default:
       countCards = 16;
       gameField.style.width = '400px';
+      gameField.style.height = '400px';
       break;
   }
   for (let i = 0; i < countCards; i++) {
@@ -126,5 +143,7 @@ function setActiveLevel(e) {
   btnFirstLevel.classList.remove('active');
   btnSecondLevel.classList.remove('active');
   btnThirdLevel.classList.remove('active');
+  btnFourthLevel.classList.remove('active');
+  btnFifthLevel.classList.remove('active');
   e.target.classList.add('active');
 }
