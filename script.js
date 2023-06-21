@@ -18,7 +18,7 @@ function initialize() {
   levelList.addEventListener('click', createLevel);
   imagesNumbers = createImagesNumbers(countCards);
   shuffleArray(imagesNumbers);
-  console.log('imagesNumbers: ', imagesNumbers);
+  // console.log('imagesNumbers: ', imagesNumbers);
   generateCards();
 }
 
@@ -111,7 +111,7 @@ function createLevel(e) {
   generateCards();
   imagesNumbers = createImagesNumbers(countCards);
   shuffleArray(imagesNumbers);
-  console.log(imagesNumbers);
+  // console.log(imagesNumbers);
 }
 
 function createImagesNumbers(cardsQuantity) {

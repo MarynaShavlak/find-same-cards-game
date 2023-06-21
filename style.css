@@ -32,6 +32,7 @@ body {
 
 #cards {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	background: #A2BFD7;
 	min-width: 400px;
